@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="snake.css">
+    <script src="snake.js" defer></script>
+</head>
+
+<body>
+    <div class="webpage">
+        <div class="header-container">
+            <header>
+                <a href="../../index.html">
+                    <img src="../../Index/Assets/logo.png" alt="Website logo">
+                </a>
+            </header>
+            <nav>
+                <a href="../2048/2048.html">2048</a>
+                <a href="../Connect4/connect4.html">Connect 4</a>
+                <a href="../Rock-Paper-Scissors/rps.html">Rock-Paper-Scissors</a>
+                <a href="../Snake/snake.html">Snake</a>
+                <a href="../Sudoku/sudoku.html">Sudoku</a>
+                <a href="../Tic-Tac-Toe/tic-tac-toe.html">Tic-Tac-Toe</a>
+            </nav>
+        </div>
+
+        <div class="game-container">
+            <div class="game-header">
+                <h1>Snake</h1>
+                <hr>
+                <h3 id="score">Score: <span id="game-score">0</span></h3>
+            </div>
+            <br>
+            <div class="game">
+                <canvas id="board"></canvas>
+            </div>
+            <br>
+            <div class="buttons">
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

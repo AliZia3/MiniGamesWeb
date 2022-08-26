@@ -1,0 +1,104 @@
+@import url(../../Index/index.css);
+
+.game-container{
+    background: linear-gradient(to right, rgb(45, 160, 45), rgb(56, 56, 162));
+    width: 100vh;
+    padding: 10px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.game-header {
+    width: 100%;
+    text-align: center;
+}
+
+hr {
+    background-color: black;
+    height: 5px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selection{
+    background-color: rgba(128, 128, 128, 0.259);
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 40vh;
+    border: 5px solid black;
+    margin: 0px 10px;
+    margin-top: 10px;
+}
+
+.selection img {
+    height: 30vh;
+}
+
+.choices-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px 0;
+}
+
+.choices-container img {
+    height: 10vh;
+    margin: 0 15px;
+}
+
+.choices-container img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s all ease-in-out;
+}
+
+@media screen and (max-width:1000px) {
+    .game-container {
+        width: 100%;
+        padding: 40px;
+    }
+    
+    .selection {
+        height: 15vh;
+        width: 15vh;
+    }
+
+    .choices-container img {
+        height: 8vh;
+    }
+
+    .selection img {
+        height: 10vh;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .selection {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,117 @@
+@import url(../../Index/index.css);
+
+.game-container {
+    background-color: rgb(160, 156, 156);
+    width: 100vh;
+    padding: 10px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-header {
+    width: 100%;
+    text-align: center;
+}
+
+hr {
+    background-color: black;
+    height: 5px;
+}
+
+.red-turn {
+    color: red;
+    font-weight: bold;
+}
+
+.yellow-turn {
+    color: yellow;
+    font-weight: bold;
+}
+
+.red-winner {
+    color: red;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.yellow-winner {
+    color: yellow;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#board {
+    width: 580px;
+    background-color: blue;
+    border: 10px solid navy;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tile {
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    
+
+    /* Circle */
+    background-color: rgb(160, 156, 156);
+    border-radius: 50%;
+    border: 5px solid navy;
+}
+
+.red-piece {
+    background-color: red;
+}
+
+.yellow-piece {
+    background-color: yellow;
+}
+
+button {
+    background-color: rgb(46, 54, 160);
+    color: white;
+    padding: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: 0.3s ease-in-out;
+}
+
+
+@media screen and (max-width:1000px) {
+    .game-container {
+        width: 100%;
+        padding: 40px;
+    }
+}
+
+@media screen and (max-width:580px) {
+    .game-container {
+        width: 100%;
+        padding: 40px;
+    }
+
+    #board {
+        width: 375px;
+    }
+
+    .tile {
+        height: 40px;
+        width: 40px;
+    }
+}

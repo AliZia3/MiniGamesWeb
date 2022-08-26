@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="rps.css">
+    <script src="rps.js" defer></script>
+</head>
+
+<body>
+    <div class="webpage">
+        <div class="header-container">
+            <header>
+                <a href="../../index.html">
+                    <img src="../../Index/Assets/logo.png" alt="Website logo">
+                </a>
+            </header>
+            <nav>
+                <a href="../2048/2048.html">2048</a>
+                <a href="../Connect4/connect4.html">Connect 4</a>
+                <a href="../Rock-Paper-Scissors/rps.html">Rock-Paper-Scissors</a>
+                <a href="../Snake/snake.html">Snake</a>
+                <a href="../Sudoku/sudoku.html">Sudoku</a>
+                <a href="../Tic-Tac-Toe/tic-tac-toe.html">Tic-Tac-Toe</a>
+            </nav>
+        </div>
+
+        <div class="game-container">
+            <div class="game-header">
+                <h1>Rock-Paper-Scissors</h1>
+                <hr>
+            </div>
+            <br>
+            <div class="game">
+                <div class="output-container">
+                    <div class="container" id="computer-container">
+                        <h1 id="computer-score">0</h1>
+                        <div class="selection computer-selection">Opponent</div>
+                    </div>
+
+                    <div class="container" id="user-container">
+                        <div class="selection user-selection">You</div>
+                        <h1 id="user-score">0</h1>
+                    </div>
+                </div>
+
+                <div class="choices-container">
+                    <img src="Assets/rock.png" class="choice" id="rock">
+                    <img src="Assets/paper.png" class="choice" id="paper">
+                    <img src="Assets/scissors.png" class="choice" id="scissors">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
