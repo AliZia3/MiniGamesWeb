@@ -1,13 +1,14 @@
 // Board
 let board;
-let blockSize = 25;
-let rows = 20;
-let cols = 20;
+let blockSize;
+let rows;
+let cols;
+let boardSize = window.matchMedia("(max-width: 1000px")
 let context; // Drawing object
 
 // Snake Head (Starts at (5,5) on board)
-let snakeX = blockSize * 5;
-let snakeY = blockSize * 5;
+let snakeX;
+let snakeY;
 
 // Snake Velocity
 let velocityX = 0;
@@ -20,7 +21,7 @@ let snakeBody = [];
 let foodX;
 let foodY;
 
-// Gameplay Condition
+// Gameplay Conditions
 let score = 0;
 let gameOver = false;
 let resetBtn = document.getElementById('reset').addEventListener('click', resetGame);
@@ -34,6 +35,8 @@ window.onload = function () {
         }
     }, false);
 
+    boardSizeChanger(boardSize);
+    swiperHandler();
     setGame();
     setInterval(update, 1000 / 10); //Calls update function every 100 miliseconds
 }
@@ -49,6 +52,25 @@ function setGame() {
 
     placeFood();
     document.addEventListener('keyup', changeDir);
+}
+
+
+//Game board conditions for different screens
+function boardSizeChanger(boardSize) {
+    if (boardSize.matches) {
+        blockSize = 20;
+        rows = 16;
+        cols = 16;
+        snakeX = blockSize * 5;
+        snakeY = blockSize * 5;
+    }
+    else {
+        blockSize = 25;
+        rows = 21;
+        cols = 21;
+        snakeX = blockSize * 4;
+        snakeY = blockSize * 4;
+    }
 }
 
 
@@ -123,6 +145,64 @@ function changeDir(e) {
         velocityX = 1;
         velocityY = 0;
     }
+}
+
+
+// Changes direction of snake when swiping on phones
+function swiperHandler() {
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    var xDown = null;
+    var yDown = null;
+
+    function getTouches(evt) {
+        return evt.touches ||
+            evt.originalEvent.touches;
+    }
+
+    function handleTouchStart(evt) {
+        const firstTouch = getTouches(evt)[0];
+        xDown = firstTouch.clientX;
+        yDown = firstTouch.clientY;
+    };
+
+    function handleTouchMove(evt) {
+        if (!xDown || !yDown) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;
+        var yUp = evt.touches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0 && velocityX != -1) {
+                // Swipe Right
+                velocityX = -1;
+                velocityY = 0;
+            } else if (xDiff < 0 && velocityX != 1) {
+                // Swipe Left
+                velocityX = 1;
+                velocityY = 0;
+            }
+        } else {
+            if (yDiff > 0 && velocityY != 1) {
+                // Swipe Up 
+                velocityX = 0;
+                velocityY = -1;
+            } else if (yDiff < 0 && velocityY != -1) {
+                // Swipe Down
+                velocityX = 0;
+                velocityY = 1;
+            }
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;
+    };
 }
 
 
