@@ -20,8 +20,11 @@ window.onload = function () {
         setGame();
     })
 
+    keyHandler();
+    swipeHandler();
     setGame();
 }
+
 
 function setGame() {
     board = [
@@ -44,8 +47,8 @@ function setGame() {
     //create 2 to begin the game
     setTwo();
     setTwo();
-
 }
+
 
 function updateTile(tile, num) {
     tile.innerText = "";
@@ -61,30 +64,88 @@ function updateTile(tile, num) {
     }
 }
 
-document.addEventListener('keyup', (e) => {
-    if (e.code == "ArrowLeft") {
-        slideLeft();
-        setTwo();
-    }
-    else if (e.code == "ArrowRight") {
-        slideRight();
-        setTwo();
-    }
-    else if (e.code == "ArrowUp") {
-        slideUp();
-        setTwo();
 
+function keyHandler() {
+    document.addEventListener('keyup', (e) => {
+        if (e.code == "ArrowLeft") {
+            slideLeft();
+            setTwo();
+        }
+        else if (e.code == "ArrowRight") {
+            slideRight();
+            setTwo();
+        }
+        else if (e.code == "ArrowUp") {
+            slideUp();
+            setTwo();
+
+        }
+        else if (e.code == "ArrowDown") {
+            slideDown();
+            setTwo();
+        }
+        document.getElementById("score").innerText = score;
+    })
+}
+
+
+function swipeHandler() {
+    document.addEventListener('touchstart', handleTouchStart, false);
+    document.addEventListener('touchmove', handleTouchMove, false);
+
+    var xDown = null;
+    var yDown = null;
+
+    function getTouches(evt) {
+        return evt.touches ||
+            evt.originalEvent.touches;
     }
-    else if (e.code == "ArrowDown") {
-        slideDown();
-        setTwo();
-    }
-    document.getElementById("score").innerText = score;
-})
+
+    function handleTouchStart(evt) {
+        const firstTouch = getTouches(evt)[0];
+        xDown = firstTouch.clientX;
+        yDown = firstTouch.clientY;
+    };
+
+    function handleTouchMove(evt) {
+        if (!xDown || !yDown) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;
+        var yUp = evt.touches[0].clientY;
+
+        var xDiff = xDown - xUp;
+        var yDiff = yDown - yUp;
+
+        if (Math.abs(xDiff) > Math.abs(yDiff)) {
+            if (xDiff > 0) {
+                slideLeft();
+                setTwo();
+            } else {
+                slideRight();
+                setTwo();
+            }
+        } else {
+            if (yDiff > 0) {
+                slideUp();
+                setTwo();
+            } else {
+                slideDown();
+                setTwo();
+            }
+        }
+        /* reset values */
+        xDown = null;
+        yDown = null;
+    };
+}
+
 
 function filterZero(row) {
     return row.filter(num => num != 0); //create new array of all nums != 0
 }
+
 
 function slide(row) {
     //[0, 2, 2, 2] 
@@ -104,6 +165,7 @@ function slide(row) {
     return row;
 }
 
+
 function slideLeft() {
     for (let r = 0; r < rows; r++) {
         let row = board[r];
@@ -116,6 +178,7 @@ function slideLeft() {
         }
     }
 }
+
 
 function slideRight() {
     for (let r = 0; r < rows; r++) {
@@ -130,6 +193,7 @@ function slideRight() {
         }
     }
 }
+
 
 function slideUp() {
     for (let c = 0; c < columns; c++) {
@@ -147,6 +211,7 @@ function slideUp() {
         }
     }
 }
+
 
 function slideDown() {
     for (let c = 0; c < columns; c++) {
@@ -167,6 +232,7 @@ function slideDown() {
     }
 }
 
+
 function setTwo() {
     if (!hasEmptyTile()) {
         return;
@@ -185,6 +251,7 @@ function setTwo() {
         }
     }
 }
+
 
 function hasEmptyTile() {
     let count = 0;
