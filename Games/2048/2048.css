@@ -1,5 +1,9 @@
 @import url(../../Index/index.css);
 
+body {
+    overscroll-behavior-y: contain;
+}
+
 .game-container {
     background: linear-gradient(to right, rgba(236, 165, 93, 0.408), rgba(154, 160, 119, 0.611));
     width: 100vh;
