@@ -1,5 +1,9 @@
 @import url(../../Index/index.css);
 
+body {
+    overscroll-behavior-y: contain;
+}
+
 .game-container {
     background-color: gray;
     width: 100vh;
