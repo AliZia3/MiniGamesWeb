@@ -148,10 +148,11 @@ function changeDir(e) {
 }
 
 
-// Changes direction of snake when swiping on phones
+// Changes direction of snake when swiping on touch screen devices (i.e phones)
 function swiperHandler() {
-    document.addEventListener('touchstart', handleTouchStart, false);
-    document.addEventListener('touchmove', handleTouchMove, false);
+    let boardEl = document.getElementById('board')
+    boardEl.addEventListener('touchstart', handleTouchStart, false);
+    boardEl.addEventListener('touchmove', handleTouchMove, false);
 
     var xDown = null;
     var yDown = null;
